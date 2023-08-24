@@ -564,10 +564,10 @@
       shell: ps aux | grep nexus
       register: app_status
     - debug: msg={{app_status.stdout_lines}}
-    - name: Check with netstat
     - name: wait one minute  #for the play to wait until port open on the host before executing the netstat command
       pause:
         minutes: 1
+    - name: Check with netstat
       shell: netstat -lnpt
       register: app_status
     - debug: msg={{app_status.stdout_lines}}    
